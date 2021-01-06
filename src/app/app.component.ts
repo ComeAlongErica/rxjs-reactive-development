@@ -1,32 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { from, of } from 'rxjs';
-import { map, tap, take } from 'rxjs/operators';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'pm-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'rxjs';
-
-  ngOnInit() {
-    of(2, 4, 6, 7).subscribe(console.log);
-
-    from([1, 2, 3, 4, 5]).pipe(
-      tap(item => console.log(item)),
-      map(item => item - 3),
-      map(item => {
-        if (item >= 0) {
-          throw new Error('zero detected')
-        }
-        return item
-      }),
-      take(1)
-    ).subscribe(
-      item => console.log(item),
-      err => console.log(err),
-      () => console.log('complete')
-    );
-  }
+export class AppComponent {
+  pageTitle = 'Acme Product Management';
 }
